@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["eslint-plugin-prefer-arrow", "eslint-plugin-prettier", "eslint-plugin-react"],
+  "rules": {
+    "react/no-unescaped-entities": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "no-nested-ternary": 0
+  }
 }
