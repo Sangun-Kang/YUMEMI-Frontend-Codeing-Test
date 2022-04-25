@@ -3,7 +3,6 @@
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended",
-    "airbnb",
     "plugin:prettier/recommended"
   ],
   "plugins": ["eslint-plugin-prefer-arrow", "eslint-plugin-prettier", "eslint-plugin-react"],
