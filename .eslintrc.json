@@ -1,11 +1,14 @@
 {
   "extends": [
-    "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
-  "plugins": ["eslint-plugin-prefer-arrow", "eslint-plugin-prettier", "eslint-plugin-react"],
+  "plugins": [
+    "eslint-plugin-prefer-arrow",
+    "eslint-plugin-prettier",
+    "eslint-plugin-react"
+  ],
   "rules": {
     "react/no-unescaped-entities": 0,
     "react/react-in-jsx-scope": 0,
