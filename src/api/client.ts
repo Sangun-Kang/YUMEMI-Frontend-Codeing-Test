@@ -1,7 +1,7 @@
 const getClient = async (params: string) => {
   const url = `https://opendata.resas-portal.go.jp/api/v1/${params}`
   const header = new Headers({})
-  header.append('X-API-KEY', 'A0WB4vp6eYWrVI2fXAHbpHSbaWs5ccaUCFyF6gg7')
+  header.append('X-API-KEY', process.env.REACT_APP_RESAS_API_KEY || '')
   const opt: RequestInit = {
     method: 'GET',
     headers: header,

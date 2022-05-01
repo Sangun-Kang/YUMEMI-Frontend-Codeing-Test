@@ -20,7 +20,6 @@ const Card = ({ title, paragraph }: CardProps) => {
     }
     getData()
   }, [])
-
   return (
     <aside>
       <h2>{title}~!!</h2>
