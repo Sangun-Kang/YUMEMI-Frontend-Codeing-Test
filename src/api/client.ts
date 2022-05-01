@@ -8,9 +8,6 @@ const getClient = async (params: string) => {
   }
   return await fetch(url, opt)
     .then((response) => response.json())
-    .then((data) => {
-      return data
-    })
     .catch((error) => {
       return error
     })
