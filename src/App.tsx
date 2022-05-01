@@ -1,12 +1,10 @@
-import Hoge from './components/hoge'
 import Card from './components/card'
+import './App.css'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <Hoge name="love" />
-      </header>
+      <header className="App-header"></header>
       <Card title="hoge" paragraph="moge" />
     </div>
   )
