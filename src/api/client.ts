@@ -14,3 +14,5 @@ const getClient = async (params: string) => {
 }
 
 export const GetPrefectures = async () => await getClient('prefectures')
+export const GetPopulationComposition = async (prefCode: string) =>
+  await getClient(`population/composition/perYear?cityCode=-&prefCode=${prefCode}`)
