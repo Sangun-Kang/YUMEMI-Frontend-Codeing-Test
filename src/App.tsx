@@ -1,11 +1,11 @@
-import Card from './components/card'
+import PrefList from './components/PrefList'
 import './App.css'
 
 const App = () => {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <Card title="hoge" paragraph="moge" />
+      <PrefList />
     </div>
   )
 }

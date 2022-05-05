@@ -1,0 +1,10 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.inner {
+  width: 120px;
+  margin: 0.3rem;
+}
