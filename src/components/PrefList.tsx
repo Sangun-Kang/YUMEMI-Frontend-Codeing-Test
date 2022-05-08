@@ -1,20 +1,23 @@
 import { GetPrefectures, GetPopulationComposition } from '../api/client'
 import { useEffect, useState } from 'react'
+import { PopulationComposition, PopulationCompositionDataDetail } from '../interfaces/interface'
+import Chart from './Chart'
 import './PrefList.css'
 
-interface Pref {
-  prefCode: string
+interface PrefResponse {
+  prefCode: number
   prefName: string
 }
 
-type PopulationComposition = {
-  [index: string]: string
+interface PopulationCompositionResponse {
+  boundaryYear: number
+  data: PopulationCompositionDataDetail[]
 }
 
 const PrefList = () => {
-  const [prefectures, setPrefectures] = useState<Pref[]>([])
-  const [selectPref, setSelectPref] = useState<Pref[]>([])
-  const [populationComposition, setPopulationComposition] = useState<PopulationComposition>({})
+  const [prefectures, setPrefectures] = useState<PrefResponse[]>([])
+  const [selectPref, setSelectPref] = useState<PrefResponse[]>([])
+  const [populationComposition, setPopulationComposition] = useState<PopulationComposition[]>([])
 
   useEffect(() => {
     const getData = async () => {
@@ -24,14 +27,25 @@ const PrefList = () => {
     getData()
   }, [])
 
-  const handleCheck = async (event: React.MouseEvent<HTMLInputElement>, prefecture: Pref) => {
+  const handleCheck = async (
+    event: React.MouseEvent<HTMLInputElement>,
+    prefecture: PrefResponse,
+  ) => {
     if (event.currentTarget.checked) {
       setSelectPref([...selectPref, prefecture])
-      const data = await GetPopulationComposition(prefecture.prefCode)
-      setPopulationComposition({ ...populationComposition, [prefecture.prefName]: data.result })
+      const result: PopulationCompositionResponse = (
+        await GetPopulationComposition(prefecture.prefCode)
+      ).result
+      const pc: PopulationComposition = {
+        prefName: prefecture.prefName,
+        populationCompositionData: result.data,
+      }
+      setPopulationComposition([...populationComposition, pc])
     } else {
       setSelectPref(selectPref.filter((sp) => sp !== prefecture))
-      delete populationComposition[prefecture.prefName]
+      setPopulationComposition(
+        populationComposition.filter((pc) => pc.prefName !== prefecture.prefName),
+      )
     }
   }
 
@@ -51,17 +65,11 @@ const PrefList = () => {
           </span>
         ))}
       </article>
-      <div>
-        {selectPref.map((a) => (
-          <div key={a.prefCode}>{a.prefName}</div>
-        ))}
-      </div>
-      <hr />
-      <div>
-        {Object.keys(populationComposition).map((index) => (
-          <div key={index}>{index}</div>
-        ))}
-      </div>
+      <article>
+        <div>
+          <Chart data={populationComposition} />
+        </div>
+      </article>
     </section>
   )
 }
