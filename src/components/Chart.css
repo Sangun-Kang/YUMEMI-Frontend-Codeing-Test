@@ -1,6 +1,11 @@
-.Wrapper {
-  width: 100%;
-  max-width: 650px;
-  min-width: 400px;
-  height: 350px;
+.wrapper {
+  width: 700px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.ageBox {
+  margin: 0.5rem;
 }

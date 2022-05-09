@@ -51,7 +51,7 @@ const PrefList = () => {
 
   return (
     <section>
-      <article className="wrapper">
+      <div className="container">
         {prefectures.map((prefecture) => (
           <span className="inner" key={prefecture.prefCode}>
             <input
@@ -64,12 +64,10 @@ const PrefList = () => {
             <label>{prefecture.prefName}</label>
           </span>
         ))}
-      </article>
-      <article>
-        <div>
-          <Chart data={populationComposition} />
-        </div>
-      </article>
+      </div>
+      <div>
+        <Chart data={populationComposition} />
+      </div>
     </section>
   )
 }
