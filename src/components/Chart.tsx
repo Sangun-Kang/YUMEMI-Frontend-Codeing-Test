@@ -21,8 +21,8 @@ const Chart = (props: PropsData) => {
   const data = props.data
 
   return (
-    <div className="Wrapper">
-      <div>
+    <div className="wrapper">
+      <div className="ageBox">
         <fieldset>
           <legend>詳細分類</legend>
           <div>現在値 : {age}</div>
